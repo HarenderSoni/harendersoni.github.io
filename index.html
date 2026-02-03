@@ -11,62 +11,73 @@
 
     <style>
         :root { --gold: #b8860b; --bg: #fdfdfd; --text: #2d3436; --loc: #7f8c8d; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; overflow-x: hidden; }
 
-        /* Banner */
         .hero { 
-            height: 400px; background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1454165833767-027eeef1593e?q=80&w=2070');
+            height: 380px; background: linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)), url('https://images.unsplash.com/photo-1454165833767-027eeef1593e?q=80&w=2070');
             background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 2px solid #eee;
         }
-        .hero h1 { font-size: 3.8rem; margin: 0; font-weight: 800; color: #111; }
-        .hero p { font-size: 1.2rem; color: var(--gold); font-weight: 600; letter-spacing: 2px; }
+        .hero h1 { font-size: 3.5rem; margin: 0; font-weight: 800; color: #111; }
+        .hero p { font-size: 1.1rem; color: var(--gold); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+
+        .banner-skills { display: flex; gap: 20px; margin-top: 25px; }
+        .banner-skills img { height: 40px; width: auto; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); }
+
+        .container { max-width: 1100px; margin: 50px auto; padding: 0 40px; }
+
+        /* FIXED SLIDER WITH RIGHT SHADOW & VISIBILITY */
+        .swiper { 
+            width: 100%; 
+            padding: 20px 50px 60px 50px !important; /* Extra padding so shadows aren't clipped */
+            overflow: visible !important; /* Makes next/prev cards visible */
+        }
         
-        .banner-skills { display: flex; gap: 25px; margin-top: 30px; }
-        .banner-skills img { height: 45px; width: auto; object-fit: contain; }
-
-        .container { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
-
-        /* Experience Slider with Right-Side Shadow */
-        .swiper { width: 100%; padding-bottom: 40px; }
         .swiper-slide { 
             background: #fff; padding: 40px; border-radius: 20px; border: 1px solid #f1f1f1;
-            min-height: 480px; display: flex; flex-direction: column; 
-            box-shadow: 12px 12px 25px rgba(0,0,0,0.1); /* Stronger Right-side Shadow */
+            min-height: 460px; display: flex; flex-direction: column; 
+            box-shadow: 15px 15px 30px rgba(0,0,0,0.12), -5px 0 15px rgba(0,0,0,0.02); /* Multi-side shadow */
+            transition: all 0.4s ease;
+            opacity: 0.4; /* Inactive cards are faint */
+            transform: scale(0.9);
         }
+        
+        .swiper-slide-active { 
+            opacity: 1; 
+            transform: scale(1); 
+            z-index: 10;
+        }
+
+        /* Highlight Styling for Keywords */
+        .hl { color: var(--gold); font-weight: 800; border-bottom: 1px solid #eee; }
 
         .org-top { display: flex; align-items: center; gap: 20px; margin-bottom: 15px; }
-        .org-logo { width: 75px; height: 75px; object-fit: contain; border: 1px solid #eee; border-radius: 12px; padding: 5px; }
-        .org-info h3 { margin: 0; font-size: 1.6rem; color: #000; }
-        .loc-text { color: var(--loc); font-weight: 600; font-size: 0.95rem; }
-        .year-text { color: var(--gold); font-weight: 700; font-size: 0.95rem; }
+        .org-logo { width: 70px; height: 70px; object-fit: contain; border: 1px solid #eee; border-radius: 12px; padding: 5px; background: #fff; }
+        
+        .org-info h3 { margin: 0; font-size: 1.6rem; color: #111; }
+        .loc-text { color: var(--loc); font-weight: 600; font-size: 0.9rem; }
+        .year-text { color: var(--gold); font-weight: 700; font-size: 0.9rem; }
 
-        /* Description Styling - No Stars, Colored Bullets */
-        .exp-desc { flex-grow: 1; font-size: 1rem; line-height: 1.7; color: #444; }
-        .exp-desc ul { list-style: none; padding: 0; margin: 15px 0 5px 0; }
+        .exp-desc { flex-grow: 1; font-size: 1rem; line-height: 1.8; color: #444; }
+        .exp-desc ul { list-style: none; padding: 0; margin: 15px 0 0 0; }
         .exp-desc li { position: relative; padding-left: 25px; margin-bottom: 12px; }
-        .exp-desc li::before { 
-            content: "■"; position: absolute; left: 0; color: var(--gold); 
-            font-weight: bold; font-size: 1.1rem; 
-        }
+        .exp-desc li::before { content: "■"; position: absolute; left: 0; color: var(--gold); font-size: 1rem; }
 
-        /* Compact Tags */
-        .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; padding-top: 10px; border-top: 1px solid #f5f5f5; }
-        .tag { background: #fdf2d5; color: #856404; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 700; border: 1px solid #ffeeba; }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; padding-top: 15px; border-top: 1px solid #f5f5f5; }
+        .tag { background: #fdf2d5; color: #856404; padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 800; border: 1px solid #ffeeba; }
 
-        /* Bold Education Points */
-        .edu-card { background: #fff; padding: 35px; border-radius: 20px; border-left: 10px solid var(--gold); box-shadow: 10px 10px 20px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 30px; margin-top: 40px; }
-        .edu-points { margin-top: 15px; color: #2d3436; }
-        .edu-points b { display: block; margin-bottom: 8px; font-size: 1.05rem; color: #111; }
-        .edu-points b i { color: var(--gold); margin-right: 10px; }
+        /* Education Highlighted Points */
+        .edu-card { background: #fff; padding: 35px; border-radius: 20px; border-left: 10px solid var(--gold); box-shadow: 12px 12px 25px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 40px; margin-top: 20px; }
+        .edu-points b { display: block; margin-top: 12px; font-size: 1.1rem; color: #000; text-transform: uppercase; letter-spacing: 0.5px; }
+        .edu-points b i { color: var(--gold); margin-right: 12px; }
 
-        .swiper-button-next, .swiper-button-prev { color: var(--gold) !important; transform: scale(0.6); }
+        .swiper-button-next, .swiper-button-prev { color: var(--gold) !important; top: 50%; }
     </style>
 </head>
 <body>
 
 <div class="hero">
     <h1>Harender Soni</h1>
-    <p>AUTOMATION ARCHITECT | QUALITY SPECIALIST</p>
+    <p>Automation Architect | Quality Specialist</p>
     <div class="banner-skills">
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png" alt="Selenium">
         <img src="https://ginger.amdocs.com/Content/img/Integration/TestNG.png" alt="TestNG">
@@ -85,16 +96,16 @@
                     <img src="https://vvntsequor.in/wp-content/uploads/thegem-logos/logo_2ec8e01b6af3780ccb05110cf58f5c23_2x.png" class="org-logo">
                     <div class="org-info">
                         <h3>Test Architect</h3>
-                        <p><span class="loc-text">Noida, Uttar Pradesh</span> | <span class="year-text">Dec 2024 - Apr 2025</span></p>
+                        <p><span class="loc-text">Noida, UP</span> | <span class="year-text">Dec 2024 - Apr 2025</span></p>
                     </div>
                 </div>
                 <div class="exp-desc">
-                    <b>Core Focus: Quality Strategy & Automated Solutions</b>
+                    <strong>Quality Strategy & Framework Leadership</strong>
                     <ul>
-                        <li>Spearheaded **Appium & Selenium WebDriver** frameworks for high-complexity mobile and web projects.</li>
-                        <li>Defined end-to-end **Testing Processes** via JIRA for full defect lifecycle management.</li>
-                        <li>Architected scalable suites for **Application Testing** ensuring cross-browser stability.</li>
-                        <li>Automated daily regression cycles reducing manual effort by significant margins.</li>
+                        <li>Spearheaded <span class="hl">Appium & Selenium WebDriver</span> frameworks for high-complexity mobile and web automation projects.</li>
+                        <li>Defined the <span class="hl">Testing Process</span> via JIRA, ensuring 100% defect traceability and sprint quality.</li>
+                        <li>Architected scalable automation suites for diverse <span class="hl">Application Testing</span> scenarios across enterprise platforms.</li>
+                        <li>Owned the end-to-end quality roadmap for multiple high-stakes releases.</li>
                     </ul>
                 </div>
                 <div class="tag-row">
@@ -111,15 +122,15 @@
                     </div>
                 </div>
                 <div class="exp-desc">
-                    <b>International Deputation (Visa 457)</b>
+                    <strong>International Client Deputation (Visa 457)</strong>
                     <ul>
-                        <li>On-site consultant for National Australia Bank (NAB) for core banking transformations.</li>
-                        <li>Developed Page Object Model (POM) frameworks for secure transaction validation.</li>
-                        <li>Executed critical regression suites for large-scale migration projects in Sydney.</li>
+                        <li>On-site consultant for <span class="hl">National Australia Bank (NAB)</span>, delivering high-stake banking automation modules.</li>
+                        <li>Engineered <span class="hl">Page Object Model (POM)</span> frameworks ensuring scalability across diverse banking portals.</li>
+                        <li>Ensured 100% test coverage for critical financial transaction flows under strict regulatory standards.</li>
                     </ul>
                 </div>
                 <div class="tag-row">
-                    <span class="tag">#NorthSydney</span> <span class="tag">#Banking</span> <span class="tag">#Visa457</span> <span class="tag">#POM</span>
+                    <span class="tag">#NorthSydney</span> <span class="tag">#Banking</span> <span class="tag">#Visa457</span> <span class="tag">#Australia</span>
                 </div>
             </div>
 
@@ -132,15 +143,15 @@
                     </div>
                 </div>
                 <div class="exp-desc">
-                    <b>High Performer (HPF) Career Milestone</b>
+                    <strong>High Performer (HPF) Career Milestone</strong>
                     <ul>
-                        <li>Ranked as **High Performer** for delivering high-quality automation for global clients.</li>
-                        <li>Mentored over 50 freshers at the Infosys Mysore Training Centre on Java and DBMS.</li>
-                        <li>Optimized BDD frameworks using Cucumber and Gherkin for business-readable tests.</li>
+                        <li>Recognized as <span class="hl">High Performer (HPF)</span> for exceptional contributions to complex SDLC projects.</li>
+                        <li>Developed expertise in <span class="hl">Core Java, SQL, and Cucumber BDD</span> to drive automation-first testing.</li>
+                        <li>Mentored over 50+ freshers at the Infosys Mysore training center on programming and DB fundamentals.</li>
                     </ul>
                 </div>
                 <div class="tag-row">
-                    <span class="tag">#Infosys</span> <span class="tag">#CoreJava</span> <span class="tag">#CucumberBDD</span> <span class="tag">#HPF</span>
+                    <span class="tag">#Infosys</span> <span class="tag">#HighPerformer</span> <span class="tag">#Java</span> <span class="tag">#BDD</span>
                 </div>
             </div>
 
@@ -151,20 +162,20 @@
 
     <div class="edu-card" data-aos="fade-up">
         <img src="https://scontent.fdel27-5.fna.fbcdn.net/v/t39.30808-6/300223186_411065217786322_5048294749024043984_n.png?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=zCGxjK03DxAQ7kNvwFHBu0G&_nc_oc=Adla_EtL_ifK3njdI-OxuiUJRRgZoGfsjWjgbKRbMJqM9I2ns1sb1Nl5YiIlc0CHWvcKZaz7dm17cetJMK7xxrrp&_nc_zt=23&_nc_ht=scontent.fdel27-5.fna&_nc_gid=56OK3MdsZRLs7Na6Iygpqg&oh=00_Afs8kn3wMGYDM292Ua_7HLEj4T4Y9tvpbWcGPU0rzGSeNw&oe=698796D7" style="width:100px;">
-        <div>
-            <h3 style="margin:0;">Bachelor of Technology (CSE)</h3>
+        <div style="flex-grow:1;">
+            <h3 style="margin:0;">B.Tech in Computer Science & Engineering</h3>
             <p><span class="loc-text">Lingaya's University</span> | <span class="year-text">2010 - 2014</span></p>
             <div class="edu-points">
-                <b><i class="fas fa-users-cog"></i> Subhead of Attendance Committee</b>
+                <b><i class="fas fa-crown"></i> Subhead of Attendance Committee</b>
                 <b><i class="fas fa-shield-alt"></i> Member of Discipline Committee</b>
             </div>
-            <div style="background:var(--gold); color:white; padding:5px 15px; border-radius:20px; font-weight:bold; display:inline-block; margin-top:10px;">GPA: 7.85</div>
+            <div style="background:var(--gold); color:white; padding:6px 18px; border-radius:20px; font-weight:bold; display:inline-block; margin-top:15px;">GPA: 7.85</div>
         </div>
     </div>
 </div>
 
-<footer style="text-align: center; padding: 40px; color: #888;">
-    © 2026 Harender Soni | Automation Specialist
+<footer style="text-align: center; padding: 50px; color: #888;">
+    © 2026 Harender Soni | Built for Excellence in Automation
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -172,8 +183,12 @@
 <script>
     AOS.init();
     new Swiper(".mySwiper", {
+        slidesPerView: 1.1, /* Shows part of the next card */
+        centeredSlides: true,
+        spaceBetween: 30,
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-        loop: true, autoplay: { delay: 5000 }
+        loop: true,
+        autoplay: { delay: 4000 }
     });
 </script>
 </body>
