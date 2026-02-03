@@ -12,69 +12,60 @@
         :root { --gold: #b8860b; --bg: #f2f4f7; --text: #2d3436; --loc: #7f8c8d; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; overflow-x: hidden; }
 
-        /* Tech Hero Section */
+        /* Hero Section with Tech Background */
         .hero { 
-            height: 240px; 
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070');
+            height: 300px; 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #fff;
         }
-        .hero h1 { font-size: 3rem; margin: 0; font-weight: 800; letter-spacing: -1px; }
-        .hero p { font-size: 1rem; color: var(--gold); font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; }
+        .hero h1 { font-size: 3rem; margin: 0; font-weight: 800; }
+        .hero .journey-tag { color: var(--gold); font-weight: 700; margin-top: 5px; font-size: 1.1rem; letter-spacing: 1px; }
+        .hero .exp-line { font-size: 0.95rem; background: rgba(184, 134, 11, 0.2); padding: 5px 15px; border-radius: 20px; margin-top: 10px; border: 1px solid var(--gold); }
         
-        .banner-skills { display: flex; gap: 15px; margin-top: 15px; padding: 8px 20px; border-radius: 50px; background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); }
-        .banner-skills img { height: 28px; filter: brightness(0) invert(1); }
+        /* Colorful Logos in Hero */
+        .banner-skills { display: flex; gap: 20px; margin-top: 20px; padding: 10px 25px; border-radius: 50px; background: rgba(255,255,255,0.9); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .banner-skills img { height: 35px; width: auto; object-fit: contain; }
 
         .main-wrapper { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
-        .section-title { font-size: 1.6rem; font-weight: 800; margin: 30px 0 15px 0; border-left: 6px solid var(--gold); padding-left: 18px; }
+        .section-title { font-size: 1.6rem; font-weight: 800; margin: 40px 0 20px 0; border-left: 6px solid var(--gold); padding-left: 18px; }
 
-        /* DEEP 3D SHADOW SLIDER */
-        .swiper { width: 100%; padding-bottom: 30px !important; }
-        .swiper-slide { 
-            background: #fff; padding: 35px 40px; border-radius: 15px; border: 1px solid #e1e8ed;
-            min-height: 480px; /* Reduced min-height to kill white space */
-            display: flex; flex-direction: column; 
-            /* Multi-layered 3D Shadow */
+        /* 3D Cards Style */
+        .card-3d {
+            background: #fff; border-radius: 15px; border: 1px solid #e1e8ed;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 15px 35px rgba(0,0,0,0.1), 10px 10px 20px rgba(0,0,0,0.05);
-            box-sizing: border-box;
-            position: relative;
+            transition: transform 0.3s ease;
         }
 
-        .hl { color: var(--gold); font-weight: 800; }
-        .org-top { display: flex; align-items: center; gap: 20px; margin-bottom: 15px; border-bottom: 1px solid #f8f9fa; padding-bottom: 15px; }
-        .org-logo { width: 65px; height: 65px; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid #eee; padding: 5px; }
-        .org-info h3 { margin: 0; font-size: 1.6rem; color: #111; }
-        .loc-text { color: var(--loc); font-weight: 600; font-size: 0.9rem; }
-        .year-text { color: var(--gold); font-weight: 700; font-size: 0.9rem; }
+        /* Swiper Adjustments */
+        .swiper { width: 100%; padding-bottom: 40px !important; }
+        .swiper-slide { padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; min-height: 450px; }
 
-        /* Enriched Descriptions to fill space */
-        .exp-desc { flex-grow: 1; font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 10px; }
-        .exp-desc ul { list-style: none; padding: 0; margin: 10px 0; }
-        .exp-desc li { position: relative; padding-left: 25px; margin-bottom: 8px; }
+        .hl { color: var(--gold); font-weight: 800; }
+        .org-top { display: flex; align-items: center; gap: 20px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #f8f9fa; }
+        .org-logo { width: 70px; height: 70px; object-fit: contain; border-radius: 8px; border: 1px solid #eee; padding: 5px; background: #fff; }
+        
+        .exp-desc { flex-grow: 1; font-size: 1.05rem; line-height: 1.7; color: #444; }
+        .exp-desc li { position: relative; padding-left: 25px; margin-bottom: 10px; list-style: none; }
         .exp-desc li::before { content: "→"; position: absolute; left: 0; color: var(--gold); font-weight: 900; }
 
-        /* Minimal Tag Row */
-        .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; border-top: 1px solid #f9f9f9; }
-        .tag { background: #fdf2d5; color: #856404; padding: 3px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; border: 1px solid #ffeeba; }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .tag { background: #fdf2d5; color: #856404; padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: 1px solid #ffeeba; }
 
-        /* Awards & Education with 3D Shadow */
-        .wide-card { background: #fff; padding: 30px; border-radius: 15px; border: 1px solid #e1e8ed; box-shadow: 0 15px 30px rgba(0,0,0,0.08); margin-bottom: 25px; }
-        .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .award-box { display: flex; align-items: center; gap: 15px; padding: 15px; background: #fafafa; border-radius: 12px; border-left: 4px solid var(--gold); }
-        .award-box i { font-size: 1.8rem; color: var(--gold); }
+        /* Education Specific */
+        .edu-card { padding: 40px; display: flex; align-items: center; gap: 40px; }
+        .edu-logo { width: 120px; height: 120px; object-fit: contain; }
 
-        .edu-flex { display: flex; align-items: center; gap: 30px; }
-        .edu-points b { display: block; margin-top: 10px; font-size: 1rem; color: #111; }
-        .edu-points b i { color: var(--gold); margin-right: 10px; }
-
-        .swiper-button-next, .swiper-button-prev { color: var(--gold) !important; transform: scale(0.7); }
+        .swiper-button-next, .swiper-button-prev { color: var(--gold) !important; transform: scale(0.6); }
     </style>
 </head>
 <body>
 
 <div class="hero">
     <h1>Harender Soni</h1>
-    <p>Automation Architect | Quality Specialist</p>
+    <div class="journey-tag">Professional Journey: 2014 — Present</div>
+    <div class="exp-line" id="experience-text">Calculating Experience...</div>
+    
     <div class="banner-skills">
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png" alt="Selenium">
         <img src="https://ginger.amdocs.com/Content/img/Integration/TestNG.png" alt="TestNG">
@@ -87,130 +78,110 @@
 <div class="main-wrapper">
     
     <div class="section-title">Professional Experience</div>
-    
-    <div class="swiper mySwiper">
+    <div class="swiper experienceSwiper">
         <div class="swiper-wrapper">
-            
-            <div class="swiper-slide">
+            <div class="swiper-slide card-3d">
                 <div class="org-top">
                     <img src="https://vvntsequor.in/wp-content/uploads/thegem-logos/logo_2ec8e01b6af3780ccb05110cf58f5c23_2x.png" class="org-logo">
-                    <div class="org-info">
-                        <h3>Test Architect</h3>
-                        <p><span class="loc-text">Noida, UP</span> | <span class="year-text">Dec 2024 - Apr 2025</span></p>
+                    <div>
+                        <h3 style="margin:0">Test Architect</h3>
+                        <p style="margin:0"><span class="loc-text">Noida, UP</span> | <span class="year-text">Dec 2024 - Apr 2025</span></p>
                     </div>
                 </div>
                 <div class="exp-desc">
                     <ul>
-                        <li>Led <span class="hl">Appium</span> automation for high-complexity mobile apps, reducing manual cycles by 70%.</li>
-                        <li>Built scalable <span class="hl">Selenium WebDriver</span> frameworks with multi-threaded parallel execution.</li>
-                        <li>Configured <span class="hl">JIRA Dashboards</span> for end-to-end defect tracking and automated QA metrics reporting.</li>
-                        <li>Optimized <span class="hl">Testing Processes</span> to support bi-weekly production releases with zero regression leaks.</li>
+                        <li>Architected <span class="hl">Appium & Selenium</span> frameworks with advanced reporting.</li>
+                        <li>Automated complex enterprise workflows for mobile and web.</li>
+                        <li>Configured CI/CD gates using <span class="hl">Jenkins</span> for automated regression.</li>
                     </ul>
                 </div>
-                <div class="tag-row">
-                    <span class="tag">#Appium</span> <span class="tag">#Selenium</span> <span class="tag">#JIRA</span> <span class="tag">#AutomationArchitect</span>
-                </div>
+                <div class="tag-row"><span class="tag">#Appium</span> <span class="tag">#AutomationArchitect</span></div>
             </div>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide card-3d">
                 <div class="org-top">
                     <img src="https://1000logos.net/wp-content/uploads/2021/06/NAB-National-Australia-Bank-logo-768x432.jpg" class="org-logo">
-                    <div class="org-info">
-                        <h3>Senior Test Analyst</h3>
-                        <p><span class="loc-text">Sydney, Australia</span> | <span class="year-text">Oct 2018 - Nov 2019</span></p>
+                    <div>
+                        <h3 style="margin:0">Senior Test Analyst</h3>
+                        <p style="margin:0"><span class="loc-text">North Sydney, Australia</span> | <span class="year-text">2018 - 2019</span></p>
                     </div>
                 </div>
                 <div class="exp-desc">
-                    <strong>International Client Deputation (Visa 457)</strong>
                     <ul>
-                        <li>On-site consultant for <span class="hl">National Australia Bank (NAB)</span>, delivering secure banking automation modules.</li>
-                        <li>Engineered <span class="hl">Page Object Model (POM)</span> frameworks ensuring scalability across diverse banking portals.</li>
-                        <li>Utilized <span class="hl">Git</span> for version control in a global distributed team environment across Australia and India.</li>
-                        <li>Ensured 100% test coverage for critical financial transaction flows under strict regulatory standards.</li>
+                        <li>On-site Lead for <span class="hl">National Australia Bank (NAB)</span> Banking portals.</li>
+                        <li>Engineered <span class="hl">POM</span> frameworks to handle high-security financial data.</li>
+                        <li>Collaborated with global stakeholders on Visa 457 deputation.</li>
                     </ul>
                 </div>
-                <div class="tag-row">
-                    <span class="tag">#NAB</span> <span class="tag">#FinTech</span> <span class="tag">#Sydney</span> <span class="tag">#POM</span>
-                </div>
+                <div class="tag-row"><span class="tag">#Australia</span> <span class="tag">#Banking</span></div>
             </div>
-
-            <div class="swiper-slide">
-                <div class="org-top">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" class="org-logo">
-                    <div class="org-info">
-                        <h3>Senior Test Analyst</h3>
-                        <p><span class="loc-text">Pune / Mysore, India</span> | <span class="year-text">July 2014 - 2021</span></p>
-                    </div>
-                </div>
-                <div class="exp-desc">
-                    <strong>Career Milestone: High Performer (HPF)</strong>
-                    <ul>
-                        <li>Ranked as <span class="hl">High Performer (HPF)</span> for excellence in automation delivery for Tier-1 clients.</li>
-                        <li>Mastered <span class="hl">Core Java, SQL, and PL/SQL</span> for complex database and backend validation.</li>
-                        <li>Mentored over 50+ freshers at the Infosys Mysore training center on programming and DB fundamentals.</li>
-                        <li>Optimized <span class="hl">Cucumber BDD</span> frameworks for business-readable test scenarios and reporting.</li>
-                    </ul>
-                </div>
-                <div class="tag-row">
-                    <span class="tag">#Infosys</span> <span class="tag">#HighPerformer</span> <span class="tag">#Java</span> <span class="tag">#CucumberBDD</span>
-                </div>
-            </div>
-
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
 
     <div class="section-title">Awards & Certifications</div>
-    <div class="wide-card">
-        <div class="awards-grid">
-            <div class="award-box">
-                <i class="fas fa-medal"></i>
-                <div>
-                    <strong>High Performer (HPF)</strong>
-                    <p style="margin:2px 0; font-size:0.85rem; color:#666;">Infosys Annual Excellence Award</p>
+    <div class="swiper awardsSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide card-3d" style="min-height: 200px;">
+                <div style="display:flex; align-items:center; gap:20px">
+                    <i class="fas fa-trophy" style="font-size: 3rem; color: var(--gold)"></i>
+                    <div>
+                        <h3 style="margin:0">High Performer (HPF)</h3>
+                        <p>Infosys Excellence Award for consistently delivering top-tier quality solutions.</p>
+                    </div>
                 </div>
             </div>
-            <div class="award-box">
-                <i class="fas fa-certificate"></i>
-                <div>
-                    <strong>ISTQB Certified</strong>
-                    <p style="margin:2px 0; font-size:0.85rem; color:#666;">Global Quality Standard</p>
+            <div class="swiper-slide card-3d" style="min-height: 200px;">
+                <div style="display:flex; align-items:center; gap:20px">
+                    <i class="fas fa-certificate" style="font-size: 3rem; color: var(--gold)"></i>
+                    <div>
+                        <h3 style="margin:0">ISTQB Certified</h3>
+                        <p>Foundation Level certification in Software Testing, recognized globally.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="section-title">Education</div>
-    <div class="wide-card">
-        <div class="edu-flex">
-            <img src="https://scontent.fdel27-5.fna.fbcdn.net/v/t39.30808-6/300223186_411065217786322_5048294749024043984_n.png?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&oh=00_Afs8kn3wMGYDM292Ua_7HLEj4T4Y9tvpbWcGPU0rzGSeNw&oe=698796D7" style="width:90px;">
-            <div>
-                <h3 style="margin:0; font-size:1.4rem;">B.Tech in Computer Science & Engineering</h3>
-                <p><span class="loc-text">Lingaya's University</span> | <span class="year-text">2010 - 2014</span></p>
-                <div class="edu-points">
-                    <b><i class="fas fa-check-circle"></i> Subhead of Attendance Committee</b>
-                    <b><i class="fas fa-shield-alt"></i> Member of Discipline Committee</b>
-                </div>
-                <div style="background:var(--gold); color:white; padding:5px 15px; border-radius:20px; font-weight:bold; display:inline-block; margin-top:15px; font-size:0.8rem;">GPA: 7.85</div>
+    <div class="card-3d edu-card">
+        <img src="https://scontent.fdel27-5.fna.fbcdn.net/v/t39.30808-1/300223186_411065217786322_5048294749024043984_n.png?stp=dst-png_s200x200&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&oh=00_AftqNXEaFueVZ5vEoSPEm2tC3H9C7-zC9IeEkc6TKe58lA&oe=6987A2D1" class="edu-logo" alt="University Logo">
+        <div>
+            <h3 style="margin:0; font-size:1.6rem;">B.Tech in Computer Science & Engineering</h3>
+            <p><span class="loc-text">Lingaya's University</span> | <span class="year-text">2010 - 2014</span></p>
+            <div style="margin:15px 0">
+                <p><b><i class="fas fa-users-cog"></i> Subhead of Attendance Committee</b></p>
+                <p><b><i class="fas fa-shield-alt"></i> Member of Discipline Committee</b></p>
             </div>
+            <div style="background:var(--gold); color:white; padding:5px 15px; border-radius:20px; display:inline-block; font-weight:bold">GPA: 7.85</div>
         </div>
     </div>
+
 </div>
 
-<footer style="text-align: center; padding: 40px; color: #888; font-size: 0.9rem;">
-    © 2026 Harender Soni | Built for Excellence in QA
-</footer>
+<footer style="text-align: center; padding: 50px; color: #888;">© 2026 Harender Soni</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        autoplay: { delay: 5000 },
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
-    });
+    // Dynamic Experience Calculator
+    function calculateExp() {
+        const startDate = new Date('2014-07-01');
+        const today = new Date();
+        let totalMonths = (today.getFullYear() - startDate.getFullYear()) * 12 + (today.getMonth() - startDate.getMonth());
+        
+        let effectiveMonths = totalMonths - 24; // Minus 24 months as requested
+        let years = Math.floor(effectiveMonths / 12);
+        let months = effectiveMonths % 12;
+        
+        document.getElementById('experience-text').innerHTML = 
+            `<i class="fas fa-briefcase"></i> Over <b>${years} Years and ${months} Months</b> of Professional Excellence`;
+    }
+    calculateExp();
+
+    // Swiper Initializations
+    new Swiper(".experienceSwiper", { loop: true, autoplay: { delay: 4000 }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" } });
+    new Swiper(".awardsSwiper", { loop: true, autoplay: { delay: 3000 } });
 </script>
 </body>
 </html>
