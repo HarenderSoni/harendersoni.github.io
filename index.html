@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { --gold: #b8860b; --bg: #f8fafb; --text: #2d3436; }
+        :root { --gold: #b8860b; --bg: #f8fafb; --text: #2d3436; --dark-dot: #333; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; overflow-x: hidden; }
 
         .hero { 
@@ -33,8 +33,13 @@
             height: 100%; box-sizing: border-box;
         }
 
-        /* Exp Slider Fix */
+        /* Swiper Fixes */
         .swiper { width: 100%; padding-bottom: 50px !important; }
+        
+        /* Dark Pagination Dots Style */
+        .swiper-pagination-bullet { background: #ccc !important; opacity: 1; }
+        .swiper-pagination-bullet-active { background: var(--dark-dot) !important; width: 20px; border-radius: 5px; }
+
         .exp-slide { padding: 45px; min-height: 450px; display: flex; flex-direction: column; }
         .org-top { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #f1f4f6; }
         .org-logo { width: 80px; height: 80px; object-fit: contain; border-radius: 12px; border: 1px solid #eee; padding: 10px; background: #fff; }
@@ -49,8 +54,8 @@
         .split-box { flex: 1; min-width: 0; }
         .split-box h4 { margin-bottom: 15px; font-size: 1.2rem; color: #444; display: flex; align-items: center; gap: 10px; }
 
-        /* Mini Sliders (Single Record View) */
-        .mini-swiper { height: 180px; }
+        /* Mini Sliders */
+        .mini-swiper { height: 210px; } /* Slightly increased height for dots space */
         .mini-slide { padding: 30px; display: flex; align-items: center; gap: 25px; height: 100%; }
         .mini-slide i { font-size: 3rem; color: var(--gold); flex-shrink: 0; }
         .mini-slide h3 { margin: 0; font-size: 1.3rem; }
@@ -70,7 +75,7 @@
 
 <div class="hero">
     <h1>Harender</h1>
-    <div class="subtitle">Senior Automation Test Eningeer | Quality Specialist</div>
+    <div class="subtitle">Senior Automation Test Engineer | Quality Specialist</div>
     <div class="exp-line" id="dynamic-exp">Calculating Experience...</div>
     
     <div class="banner-skills">
@@ -172,6 +177,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="swiper-pagination awards-pagination"></div>
             </div>
         </div>
 
@@ -194,6 +200,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="swiper-pagination certs-pagination"></div>
             </div>
         </div>
     </div>
@@ -220,7 +227,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    // Experience tenure logic (July 2014 - Now, minus 24 months)
     function calcExp() {
         const start = new Date(2014, 6, 1); 
         const now = new Date();
@@ -231,7 +237,6 @@
     }
     calcExp();
 
-    // Main Exp Slider
     new Swiper(".expSwiper", { 
         loop: true, 
         slidesPerView: 1,
@@ -239,18 +244,18 @@
         pagination: { el: ".swiper-pagination", clickable: true } 
     });
 
-    // Awards Slider - Set to 1 slide for single card view
     new Swiper(".awardsSwiper", { 
         loop: true, 
         slidesPerView: 1,
-        autoplay: { delay: 4000 } 
+        autoplay: { delay: 4000 },
+        pagination: { el: ".awards-pagination", clickable: true } // Pagination Enabled
     });
 
-    // Certs Slider - Set to 1 slide for single card view
     new Swiper(".certsSwiper", { 
         loop: true, 
         slidesPerView: 1,
-        autoplay: { delay: 5000 } 
+        autoplay: { delay: 5000 },
+        pagination: { el: ".certs-pagination", clickable: true } // Pagination Enabled
     });
 </script>
 </body>
