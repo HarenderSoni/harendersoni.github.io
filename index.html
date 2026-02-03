@@ -3,125 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harender Soni | Global DevOps & Automation Leader</title>
+    <title>Harender Soni | Automation Specialist & DevOps Leader</title>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        :root { --primary: #0077b5; --dark: #0a192f; --gold: #ffd700; --slate: #64748b; }
-        body { font-family: 'Inter', sans-serif; margin: 0; background: #f1f5f9; color: #1e293b; }
+        :root { --gold: #c5a059; --dark-bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; }
         
-        /* Glassmorphism Header */
-        header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 100px 10%; text-align: center; position: relative; }
-        .hero-badge { background: var(--gold); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; margin-bottom: 15px; display: inline-block; }
-        
-        .container { max-width: 1100px; margin: -50px auto 50px; position: relative; z-index: 10; padding: 0 20px; }
-        .main-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        body { font-family: 'Inter', sans-serif; background: var(--dark-bg); color: var(--text); margin: 0; overflow-x: hidden; }
 
-        /* Modern Experience Styling */
-        .exp-section { margin-top: 50px; }
-        .work-card { border-left: 4px solid var(--primary); background: #fff; padding: 30px; margin-bottom: 30px; border-radius: 0 15px 15px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
-        .work-card:hover { transform: scale(1.02); }
-        .client-highlight { background: #fff9e6; border: 1px dashed var(--gold); padding: 15px; border-radius: 8px; margin-top: 15px; }
-        
-        /* Skills Bento Grid */
-        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .bento-item { background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0; }
-        .bento-item i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; display: block; }
+        /* Top Banner with Tool Icons Background */
+        .top-banner { 
+            height: 450px; 
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), 
+                        url('https://www.testingxperts.com/wp-content/uploads/2021/12/Automation-Testing-Tools.png'); 
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            border-bottom: 4px solid var(--gold);
+        }
+        .top-banner h1 { font-size: 4rem; margin: 0; color: var(--gold); text-transform: uppercase; letter-spacing: 4px; }
+        .top-banner p { font-size: 1.5rem; letter-spacing: 2px; opacity: 0.9; }
 
-        .footer { background: var(--dark); color: white; padding: 60px 10%; text-align: center; margin-top: 100px; }
+        .container { max-width: 1200px; margin: -60px auto 40px; padding: 0 20px; }
+
+        /* Horizontal Slider Styling */
+        .experience-section { background: var(--card-bg); padding: 50px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--gold); margin: 0; }
+
+        .swiper { width: 100%; padding-bottom: 50px; }
+        .swiper-slide { 
+            background: rgba(255,255,255,0.05); 
+            padding: 40px; border-radius: 15px; border: 1px solid rgba(197, 160, 89, 0.2);
+            height: auto; min-height: 400px; display: flex; flex-direction: column;
+        }
+
+        .org-header { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
+        .org-logo { width: 80px; height: 80px; background: #fff; border-radius: 12px; padding: 10px; object-fit: contain; }
+        .org-info h3 { margin: 0; color: var(--gold); font-size: 1.8rem; }
+        .org-info span { font-size: 0.9rem; color: #94a3b8; }
+
+        .exp-desc { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; }
+        .exp-desc ul { padding-left: 20px; }
+        .exp-desc li { margin-bottom: 10px; }
+
+        /* Navigation Buttons */
+        .swiper-button-next, .swiper-button-prev { color: var(--gold) !important; }
+        .swiper-pagination-bullet-active { background: var(--gold) !important; }
+
+        footer { text-align: center; padding: 40px; opacity: 0.7; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-<header>
-    <div data-aos="zoom-in">
-        <span class="hero-badge">EX-INFOSYS AUSTRALIA CLIENT SIDE</span>
-        <h1 style="font-size: 3.5rem; margin: 0;">Harender Soni</h1>
-        <p style="font-size: 1.2rem; opacity: 0.8;">DevOps Engineer | Test Architect | Automation Strategist</p>
+<div class="top-banner">
+    <h1 data-aos="fade-down">Harender Soni</h1>
+    <p data-aos="fade-up">AUTOMATION SPECIALIST | DEVOPS ENGINEER</p>
+    <div style="margin-top: 20px; font-size: 1.5rem;">
+        <i class="fab fa-java" title="Java"></i> &nbsp;
+        <i class="fas fa-vial" title="Selenium"></i> &nbsp;
+        <i class="fab fa-docker" title="Docker"></i> &nbsp;
+        <i class="fab fa-aws" title="AWS"></i> &nbsp;
+        <i class="fas fa-infinity" title="DevOps"></i>
     </div>
-</header>
+</div>
 
 <div class="container">
-    <div class="main-card">
-        <h2 data-aos="fade-right"><i class="fas fa-user-tie"></i> Executive Summary</h2>
-        <p>Dynamic technology professional with <strong>8+ years</strong> of cross-functional experience. From starting as a Business Development Executive to becoming a <strong>DevOps Engineer</strong>, my journey is marked by high-impact roles at <strong>Infosys</strong> and international exposure at <strong>NAB, North Sydney</strong>. Specialist in architecting data-driven automation frameworks and streamlining SDLC/STLC processes for Banking & Insurance giants.</p>
-
-        <h2 style="margin-top: 60px;" data-aos="fade-right"><i class="fas fa-history"></i> Professional Roadmap</h2>
-
-        <div class="work-card" data-aos="fade-up">
-            <span style="color: var(--slate); font-weight: 600;">OCT 2025 - PRESENT</span>
-            <h3>DevOps Engineer | Zamboree Techvision</h3>
-            <p><strong>Noida, India</strong></p>
-            <ul>
-                <li>Driving infrastructure as code (IaC) and automating CI/CD pipelines to reduce deployment latency.</li>
-                <li>Bridging the gap between development and operations to enhance system reliability and scalability.</li>
-            </ul>
+    <div class="experience-section">
+        <div class="section-header">
+            <h2>Professional Journey</h2>
+            <p>Horizontal Slider: Swipe to explore my 8+ years of global experience</p>
         </div>
 
-        <div class="work-card" data-aos="fade-up">
-            <span style="color: var(--slate); font-weight: 600;">2022 - 2025</span>
-            <h3>Test Architect & Quality Specialist</h3>
-            <p><strong>VVnT SeQuor & Carnera Technologies</strong></p>
-            <ul>
-                <li><strong>Advanced Automation:</strong> Engineered distributed testing environments using Appium and Selenium Grid for multi-platform validation.</li>
-                <li><strong>API Strategy:</strong> Implemented comprehensive RestAssured suites for microservices validation in the Banking sector.</li>
-            </ul>
-        </div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide">
+                    <div class="org-header">
+                        <img src="https://via.placeholder.com/80?text=DevOps" class="org-logo" alt="Zamboree">
+                        <div class="org-info">
+                            <h3>DevOps Engineer</h3>
+                            <span>Zamboree Techvision | Noida | Oct 2025 - Present</span>
+                        </div>
+                    </div>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Spearheading Infrastructure Automation and Cloud orchestration.</li>
+                            <li>Managing CI/CD pipelines to ensure rapid, high-quality code deployment.</li>
+                            <li>Collaborating with cross-functional teams to optimize system performance and reliability.</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <div class="work-card" data-aos="fade-up" style="border-color: var(--gold);">
-            <span style="color: var(--slate); font-weight: 600;">JUL 2014 - JAN 2021</span>
-            <h3>Senior Test Analyst | Infosys Limited</h3>
-            <p><strong>Mysore, Pune & Sydney</strong></p>
-            <div class="client-highlight">
-                <strong><i class="fas fa-plane-departure"></i> International Deputation (NAB Client Side)</strong><br>
-                <em>Location: North Sydney, NSW, Australia</em><br>
-                Deployed as a key consultant for **National Australia Bank (NAB)** on Visa 457. Managed end-to-end automation scripts using POM and Data-driven frameworks to secure high-stakes banking transactions.
-            </div>
-            <ul style="margin-top:15px;">
-                <li><strong>Post-Australia Impact:</strong> Returned to Infosys India to lead offshore teams and implement BDD/Cucumber best practices.</li>
-                <li>Awarded <strong>"High Performer (HPF)"</strong> for exceptional defect detection and test closure efficiency.</li>
-            </ul>
-        </div>
+                <div class="swiper-slide">
+                    <div class="org-header">
+                        <img src="https://via.placeholder.com/80?text=QA" class="org-logo" alt="QA Architect">
+                        <div class="org-info">
+                            <h3>Test Architect & Sr. Specialist</h3>
+                            <span>VVnT & Carnera | 2022 - 2025</span>
+                        </div>
+                    </div>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Designed complex Mobile and Web Automation architectures using Appium and Selenium.</li>
+                            <li>Implemented RestAssured API suites for secure banking and insurance microservices.</li>
+                            <li>Mentored teams on Gherkin best practices for BDD (Cucumber) implementation.</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <div class="work-card" data-aos="fade-up">
-            <span style="color: var(--slate); font-weight: 600;">2013</span>
-            <h3>Business Development Executive (Intern) | Network Bulls</h3>
-            <p><strong>Gurugram, India</strong></p>
-            <p>Initial exposure to the corporate ecosystem, focusing on client relationship management and technical solutioning.</p>
-        </div>
+                <div class="swiper-slide">
+                    <div class="org-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" class="org-logo" alt="Infosys">
+                        <div class="org-info">
+                            <h3>Sr. Test Analyst (NAB Australia)</h3>
+                            <span>Infosys Ltd | North Sydney | 2014 - 2021</span>
+                        </div>
+                    </div>
+                    <div class="exp-desc">
+                        <p><strong>International Role:</strong> Relocated to North Sydney to lead testing for National Australia Bank (NAB).</p>
+                        <ul>
+                            <li>Engineered robust Page Object Model (POM) frameworks to secure high-value banking transactions.</li>
+                            <li>Awarded 'High Performer' for exceptional contribution to the NAB client project.</li>
+                            <li>Managed offshore-onshore coordination to streamline STLC phases.</li>
+                        </ul>
+                    </div>
+                </div>
 
-        <h2 style="margin-top: 60px;" data-aos="fade-right"><i class="fas fa-brain"></i> Automation & Technical Arsenal</h2>
-        <div class="bento-grid">
-            <div class="bento-item" data-aos="zoom-in">
-                <i class="fas fa-cogs"></i>
-                <h3>Web Automation</h3>
-                <p>Advanced Selenium WebDriver expertise with Page Object Model (POM) and TestNG integration.</p>
+                <div class="swiper-slide">
+                    <div class="org-header">
+                        <img src="https://via.placeholder.com/80?text=NB" class="org-logo" alt="Network Bulls">
+                        <div class="org-info">
+                            <h3>Business Development (Intern)</h3>
+                            <span>Network Bulls | Gurugram | 2013</span>
+                        </div>
+                    </div>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Initial career foundation focusing on networking concepts and business technicalities.</li>
+                            <li>Developed strong communication and problem-solving skills in a high-growth environment.</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
-            <div class="bento-item" data-aos="zoom-in">
-                <i class="fas fa-sync-alt"></i>
-                <h3>BDD / Gherkin</h3>
-                <p>Translating complex business requirements into executable Gherkin scenarios via Cucumber.</p>
-            </div>
-            <div class="bento-item" data-aos="zoom-in">
-                <i class="fas fa-shield-alt"></i>
-                <h3>API Validation</h3>
-                <p>Robust backend testing using RestAssured with Java for secure API endpoints.</p>
-            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
 </div>
 
-<footer class="footer">
-    <h2 style="color: var(--gold);">Harender Soni</h2>
-    <p>Global Tech Professional | Delhi/NCR | reachoutharender@gmail.com</p>
-    <div style="font-size: 2rem; margin-top: 20px;">
-        <a href="https://in.linkedin.com/in/harendersoni" style="color:white; margin:0 15px;"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/HarenderSoni" style="color:white; margin:0 15px;"><i class="fab fa-github"></i></a>
+<footer>
+    <p>Harender Soni | Automation Specialist | reachoutharender@gmail.com</p>
+    <div style="font-size: 1.5rem; margin-top: 10px;">
+        <a href="https://in.linkedin.com/in/harendersoni" style="color:var(--gold); margin:0 10px;"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/HarenderSoni" style="color:var(--gold); margin:0 10px;"><i class="fab fa-github"></i></a>
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({duration: 1200});</script>
+<script>
+    AOS.init({ duration: 1000 });
+    var swiper = new Swiper(".mySwiper", {
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        loop: true,
+        spaceBetween: 30
+    });
+</script>
 </body>
 </html>
